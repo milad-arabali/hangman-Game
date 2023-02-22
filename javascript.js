@@ -2,6 +2,7 @@ const secrentphrases =["milad","you","dad","hello","break"];
 let random_item = " ";
 let clicked = [];
 let result ="";
+
 // select random name
 function selectrandomitem (){
     random_item = secrentphrases[Math.floor(Math.random()* secrentphrases.length)];
@@ -16,14 +17,27 @@ function setunderscorse (){
     document.getElementById("clue").innerHTML = `<p>${result}</p>`
 }
 
+//heckifwon
+function checkwin (){
+    if(random_item === result){
+        document.getElementById("Gameover").querySelector("p").style.display="block";
+        document.getElementById("image").querySelector("img").src="./assets/winner.png";
+    }
 
+
+
+
+
+
+}
 // promp from phrases container
 function contaierPhrases(container){
     container = container.toLowerCase();
     clicked.indexOf(container) === -1 ? clicked.push(container) : null ;
     document.getElementById(container.toUpperCase()).className = "used";
     if(random_item.indexOf(container) >= 0){
-        setunderscorse()
+        setunderscorse();
+        checkwin ();
     }else if(random_item.indexOf(container) === -1){
 
     }
